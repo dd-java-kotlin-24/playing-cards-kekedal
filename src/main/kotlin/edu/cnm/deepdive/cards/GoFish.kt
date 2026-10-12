@@ -12,16 +12,7 @@ class GoFish {
         val playerHand = deck.deal( 7)
         val computerHand = deck.deal(7)
         println("Cards have been dealt")
-        println("Human, Behold your cards and name your claim!")
-        println(playerHand)
-        println("Which card or cards would you like?")
-        do {
-            val input = readln()
-            val rank = Rank.fromAbbreviation(input)
-            if (rank == null) {
-                println("You have chosen poorly...INVALID! Try again!")
-            }
-        } while (rank == null)
+        GoFishGameplay(playerHand, computerHand, deck).playTurns()
     }
 }
 
