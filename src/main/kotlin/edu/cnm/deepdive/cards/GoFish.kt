@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.cards
 
 import edu.cnm.deepdive.cards.model.Deck
+import edu.cnm.deepdive.cards.model.Rank
 
 class GoFish {
 
@@ -11,8 +12,16 @@ class GoFish {
         val playerHand = deck.deal( 7)
         val computerHand = deck.deal(7)
         println("Cards have been dealt")
-        println("Human, examine your hand and name your claim on my cards")
+        println("Human, Behold your cards and name your claim!")
         println(playerHand)
+        println("Which card or cards would you like?")
+        do {
+            val input = readln()
+            val rank = Rank.fromAbbreviation(input)
+            if (rank == null) {
+                println("You have chosen poorly...INVALID! Try again!")
+            }
+        } while (rank == null)
     }
 }
 
