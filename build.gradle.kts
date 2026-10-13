@@ -28,6 +28,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.jspecify)
     testImplementation(libs.kotlin.test)
     testImplementation(libs.junit.aggregator)
     testRuntimeOnly(libs.junit.engine)

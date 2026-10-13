@@ -1,7 +1,8 @@
 package edu.cnm.deepdive.cards.model;
 
 import java.util.Comparator;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
+
 
 /**
  * Encapsulates the attributes and basic operation of a standard playing card.
@@ -9,21 +10,21 @@ import org.jetbrains.annotations.NotNull;
  * @param rank One of Ace through King.
  * @param suit One of the four suits (Clubs, Diamonds, Hearts or Spades).
  */
-public record Card(Rank rank, Suit suit) implements Comparable<Card>{
+public record Card(Rank rank, Suit suit) implements Comparable<Card> {
 
+  private static final Comparator<Card> SHRINK_WRAP_COMPARATOR =
+      Comparator.comparing(Card::suit)
+          .thenComparing(Card::rank);
 
-  @NotNull
+  @NonNull
   @Override
   public String toString() {
     return rank.toString() + suit.toString();
   }
+
   @Override
-  public int compareTo(@NotNull Card otherCard){
-    if (suit == otherCard.suit) {
-      return rank.compareTo(otherCard.rank);
-    } else {
-      return suit.compareTo(otherCard.suit);
-    }
+  public int compareTo(@NonNull Card otherCard) {
+    return SHRINK_WRAP_COMPARATOR.compare(this, otherCard);
   }
 
 
