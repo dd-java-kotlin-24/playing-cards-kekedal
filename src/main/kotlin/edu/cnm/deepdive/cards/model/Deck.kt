@@ -21,7 +21,7 @@ class Deck {
         }
     }
 
-    fun shuffle(rng: RandomGenerator) {
+    fun shuffle(rng: RandomGenerator? = null) {
         Collections.shuffle(cards, rng)
     }
 

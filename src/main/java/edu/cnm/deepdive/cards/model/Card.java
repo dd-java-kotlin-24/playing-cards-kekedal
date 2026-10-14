@@ -16,10 +16,10 @@ public record Card(Rank rank, Suit suit) implements Comparable<Card> {
       Comparator.comparing(Card::suit)
           .thenComparing(Card::rank);
 
-  @NonNull
   @Override
-  public String toString() {
-    return rank.toString() + suit.toString();
+  public @NonNull String toString() {
+
+    return "%s %s".formatted(rank(), suit());
   }
 
   @Override
