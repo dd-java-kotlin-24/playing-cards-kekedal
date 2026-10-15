@@ -21,8 +21,7 @@ public enum Suit {
 
   @Override
   public String toString() {
-    return name();
-//    return abbreviation;
+    return abbreviation;
   }
 
   public Color color() {
